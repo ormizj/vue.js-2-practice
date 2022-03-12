@@ -110,7 +110,7 @@ export default {
 
     setTimeout(() => {
       this.$emit('update-render-hello-world', false)
-      this.$destroy()
+      this.$destroy() //calling this function alone, will not cause "HelloWorld" to stop rendering
     }, 5000)
   },
   destroyed() {
