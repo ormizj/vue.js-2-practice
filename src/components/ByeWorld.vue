@@ -57,8 +57,16 @@ export default {
     computedPlus() {
       return this.computedValue + 1
     },
-    computedMinus() {
-      return this.computedValue - 1
+    //computed method, by default will only be a "get" method,
+    //but you can add a "set" method if other variables need to be changed based on the new computed value
+    computedMinus: {
+      get() {
+        return this.computedValue - 1
+      },
+      //set will always have 1 parameter, which is the value returned from the "get" method
+      set(newValue) {
+        this.existingDataValue = newValue
+      }
     }
   },
 
