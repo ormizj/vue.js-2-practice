@@ -5,6 +5,7 @@
       src="./assets/logo.png"
     />
     <div>
+      <!-- the ":" or "v-" or signs usually indicates a "Vue" specific attribute -->
       <label
         class='hello-world-label'
         :class="{ 'hello-world-label-active': renderHelloWorld }"

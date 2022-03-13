@@ -135,6 +135,7 @@ export default {
     }, 1000);
 
     setTimeout(() => {
+      //Vue pre-defined methods will always start with the "$" symbol
       this.$emit('update-render-hello-world', false)
       this.$destroy() //calling this function alone, will not cause "HelloWorld" to stop rendering
     }, 5000)
