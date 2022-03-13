@@ -6,9 +6,12 @@
     />
     <div>
       <label
-        class='hello-label'
-        :class="{ 'hello-label-active': renderHelloWorld }"
-      >{{ msg }}</label>
+        class='hello-world-label'
+        :class="{ 'hello-world-label-active': renderHelloWorld }"
+      >
+        {{ msg }}
+      </label>
+
       <!-- setting condition to render the Component-->
       <!-- use ":" on the before the key, if the value is a variable-->
       <!-- "@" listens to an "emit" from the Component, and runs the value function when its called-->
@@ -18,12 +21,15 @@
         :renderHelloWorld="renderHelloWorld"
         @update-render-hello-world="updateRenderHelloWorld"
       />
+
+      <ByeWorld v-if="!renderHelloWorld" />
     </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import ByeWorld from './components/ByeWorld.vue'
 
 export default {
   data() {
@@ -34,7 +40,8 @@ export default {
   },
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    ByeWorld
   }, methods: {
     updateRenderHelloWorld(event) {
       this.renderHelloWorld = event
@@ -47,11 +54,10 @@ export default {
 <style>
 @import "./imported-css.css";
 
-.hello-label {
+.hello-world-label {
   color: red;
 }
-
-.hello-label-active {
+.hello-world-label-active {
   color: whitesmoke;
 }
 
@@ -60,7 +66,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: darkgreen;
+  color: green;
   margin-top: 60px;
 }
 </style>
