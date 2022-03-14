@@ -154,7 +154,8 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- add "scoped" attribute to limit CSS to this component only -->
+<!-- the "scoped" attribute, adds a "data-v-<key>" to every html element in this Component -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

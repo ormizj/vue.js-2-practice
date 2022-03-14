@@ -56,6 +56,7 @@ export default {
 @import "./imported-css.css";
 
 .hello-world-label {
+  cursor: text;
   color: red;
 }
 .hello-world-label-active {

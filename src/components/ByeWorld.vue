@@ -9,18 +9,41 @@
     </tr>
     <tr>
       <td>
-        Data #1
+        <label v-if="array.includes(parseInt(Math.random()*10))">if</label>
+        <label v-else-if="array.includes(parseInt(Math.random()*5))">else if</label>
+        <label v-else>else</label>
+        <br><br>
+        <div>
+          <button v-on:click="updateValues">Try Again</button>
+        </div>
+      </td>
+      <!-- the ":key" element should NEVER be an index (because index can change, while the value remains the same) -->
+      <!-- the ":key" element should be unique between all the children of the same common parent: -->
+      <!-- if you have an element with keys, and inside it another element with keys, the keys between the elements should be unique-->
+      <td>
+        <div
+          v-for="(element, index) of array"
+          :key="element"
+        >
+          <label> Index: {{index}} — Element: {{element}}</label>
+        </div>
       </td>
       <td>
         <div
-          v-for="element,index in array"
-          :key="index"
+          v-for="(value, key) in object"
+          :key='key'
         >
-          Element: {{element}} Index: {{index}}
+          <label> Key: {{key}} — Value: {{value}}</label>
         </div>
       </td>
-      <td>Data #3</td>
-      <td>Data #4</td>
+      <td>
+        <div
+          v-for="(element,index) of oddNumbers"
+          :key="element"
+        >
+          <label> Index: {{index}} — Element: {{element}}</label>
+        </div>
+      </td>
       <td>
         <label>{{computedMinus}}</label>
         &nbsp;
@@ -37,12 +60,12 @@ export default {
   data() {
     return {
       array: [1, 2, 3, 4, 5],
-      json: {
-        'key-1': 'value-1',
-        'key-2': 'value-2',
-        'key-3': 'value-3',
-        'key-4': 'value-4',
-        'key-5': 'value-5'
+      object: {
+        'key1': 'value1',
+        'key2': 'value2',
+        'key3': 'value3',
+        'key4': 'value4',
+        'key5': 'value5'
       },
       computedValue: 1,
     }
@@ -50,8 +73,9 @@ export default {
 
   //computed can be used to mutate "data" variables to make the accessability easier
   //will not cause the Component to update, if using non-"data" variables
+  //computed methods should ALWAYS return a value (that's the point of them)
   computed: {
-    evenNumbers() { return this.array.filter((number) => number % 2 === 0) },
+    oddNumbers() { return this.array.filter((number) => number % 2 === 1).map(number => number * 10) },
 
     //these 2 methods will be ran again ONLY when "computedValue" is updated
     computedPlus() {
@@ -94,5 +118,9 @@ table {
 
 td {
   padding-top: 15px;
+}
+
+table label {
+  cursor: text;
 }
 </style>
