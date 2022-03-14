@@ -21,6 +21,8 @@
       <!-- the ":key" element should be unique between all the children of the same common parent: -->
       <!-- if you have an element with keys, and inside it another element with keys, the keys between the elements should be unique-->
       <td>
+        <!-- you can also use only 1 parameter, instead of both  -->
+        <!-- (for array it will be the element) (for object it will be the value) -->
         <div
           v-for="(element, index) of array"
           :key="element"
