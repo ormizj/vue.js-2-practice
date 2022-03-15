@@ -4,7 +4,7 @@
       alt="Vue logo"
       src="./assets/logo.png"
     />
-    <div>
+    <div v-if='isApp'>
       <!-- the ":" or "v-" or signs usually indicates a "Vue" specific attribute -->
       <label
         class='hello-world-label'
@@ -12,6 +12,11 @@
       >
         {{ msg }}
       </label>
+      <br><br>
+      <!-- routing redirection -->
+      <router-link to="/routing">Go to NewWorld</router-link>
+
+      <hr color='black'>
 
       <!-- setting condition to render the Component-->
       <!-- use ":" on the before the key, if the value is a variable-->
@@ -25,29 +30,38 @@
 
       <ByeWorld v-if="!renderHelloWorld" />
     </div>
+
+    <!-- checking routing before rendering -->
+    <NewWorld v-if='isNewWorld' />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import ByeWorld from './components/ByeWorld.vue'
+import NewWorld from './components/NewWorld.vue'
 
 export default {
   data() {
     return {
       renderHelloWorld: true,
-      msg: 'Hello World is visible'
+      msg: 'HelloWorld is visible'
     }
   },
   name: 'App',
   components: {
     HelloWorld,
-    ByeWorld
+    ByeWorld,
+    NewWorld
   }, methods: {
     updateRenderHelloWorld(event) {
       this.renderHelloWorld = event
-      this.msg = 'Hello World is destroyed'
+      this.msg = 'HelloWorld is destroyed'
     }
+  }, computed: {
+    //checking routes for to decide which Components to render
+    isApp() { return this.$route.name === 'App' },
+    isNewWorld() { return this.$route.name === 'Routing' }
   }
 }
 </script>
