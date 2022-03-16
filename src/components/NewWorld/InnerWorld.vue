@@ -3,7 +3,7 @@
     <!-- this element renders the current Component in the current Router (didn't find a use for it yet)-->
     <!-- <router-view></router-view> -->
 
-    <h3>InnerWorld</h3>
+    <h3 ref="title">InnerWorld</h3>
     <label>NewWorld Inputted Text: {{query}}</label>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
       //extracting the "NewWorld" query
       query: this.$route.query.input
     })
-  },
+  }
 }
 </script>
 
