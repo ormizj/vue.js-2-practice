@@ -14,7 +14,7 @@
       </label>
       <br><br>
       <!-- routing redirection -->
-      <router-link to="/routing">Go to NewWorld</router-link>
+      <router-link to="/new">Go to NewWorld</router-link>
 
       <hr color='black'>
 
@@ -39,7 +39,8 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import ByeWorld from './components/ByeWorld.vue'
-import NewWorld from './components/NewWorld.vue'
+import { onRoute } from './utils/pathUtil'
+const NewWorld = () => import('./components/NewWorld/NewWorld.vue')
 
 export default {
   data() {
@@ -49,19 +50,24 @@ export default {
     }
   },
   name: 'App',
+
   components: {
     HelloWorld,
     ByeWorld,
     NewWorld
-  }, methods: {
+  },
+
+  methods: {
     updateRenderHelloWorld(event) {
       this.renderHelloWorld = event
       this.msg = 'HelloWorld is destroyed'
     }
-  }, computed: {
+  },
+
+  computed: {
     //checking routes for to decide which Components to render
-    isApp() { return this.$route.name === 'App' },
-    isNewWorld() { return this.$route.name === 'Routing' }
+    isApp() { return onRoute(this.$route, 'App') },
+    isNewWorld() { return onRoute(this.$route, 'NewWorld') }
   }
 }
 </script>

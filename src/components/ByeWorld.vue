@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table class="bye">
     <tr>
       <th>If &#38; Else</th>
       <th>Array Loop</th>

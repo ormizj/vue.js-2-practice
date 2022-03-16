@@ -119,11 +119,13 @@ export default {
       counter: 1
     }
   },
+
   name: 'HelloWorld',
   props: {
     msg: String,
     renderHelloWorld: Boolean
   },
+
   mounted() {
     console.log('HelloWorld Mounted')
 
@@ -140,6 +142,7 @@ export default {
       this.$destroy() //calling this function alone, will not cause "HelloWorld" to stop rendering
     }, 5000)
   },
+
   updated() {
     //you can update a non-"data" variables in the "updated()" method, because they do not cause a re-render to the Component 
     //(therefore the "updated()" method will not be called)
@@ -147,6 +150,7 @@ export default {
 
     console.log('HelloWorld Updated')
   },
+
   destroyed() {
     console.log('HelloWorld Destroyed')
     clearInterval(this.intervalId1)
