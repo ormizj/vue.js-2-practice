@@ -21,15 +21,13 @@
       v-if="!isInnerWorld"
     >Submit</button>
 
-    <!-- the "input" variable will not get updated after its first render, -->
-    <!-- because the "v-once" keyword disables updates on the element (also affects children of this element)-->
+    <!-- "v-once" disables updates on the element, after the first render (also affects children of this element) -->
     <label
       v-if="isInnerWorld"
       v-once
     >{{input}}</label>
 
-    <!-- possible to use variables which are "HTML" elements with the "v-html", -->
-    <!-- and rendering them, instead of showing their value as a String -->
+    <!-- possible to use variables which are "HTML" elements as String with the "v-html", -->
     <div v-html="rawHtml"></div>
 
     <InnerWorld v-if="isInnerWorld" />
@@ -50,25 +48,27 @@ export default {
     })
   },
 
+  //providing values allows injecting them in any child Component we want (for deep Injection)
+  provide() {
+    return {
+      rawHtml: this.rawHtml,
+    }
+  },
+
   components: {
     InnerWorld
   },
 
   computed: {
-    isInnerWorld() { return onRoute(this.$route, 'InnerWorld') }
+    isInnerWorld() { return onRoute(this.$route, 'InnerWorld') },
   },
 
   //earliest initialization possible for adding routes
   beforeCreate() {
-    // adding "InnerWorld" as a child of "NewWorld"
+    // adding "InnerWorld" as a child of "NewWorld" (doesn't help with the rendering, in this case)
     router.addRoute(router.currentRoute.name, {
       path: '/new/inner', name: 'InnerWorld', component: InnerWorld
     })
-  },
-
-  mounted() {
-    console.log(this.$refs)
-
   },
 
   methods: {
