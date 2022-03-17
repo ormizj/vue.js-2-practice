@@ -10,9 +10,7 @@ export default {
   //injecting this way changes the name of the injected value (injected values should not be changed, just like props)
   inject: {
     // injecting a value to a new name
-    localRawHtml: {
-      from: 'rawHtml'
-    },
+    localRawHtml: { from: 'rawHtml' },
     //giving an injection a default value
     defaultInject: {
       default() { return 'Default Value' }
@@ -21,6 +19,7 @@ export default {
 
   data() {
     return {
+      //you can also access injected values in "data"
       inputted: this.input
     }
   },
