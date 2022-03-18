@@ -88,7 +88,6 @@ export default {
     input() { console.log(this.input) }
   },
 
-
   directives: {
     //creating a new directive, to focus the user on an input ("v-focus" as element attribute to use it)
     focus: {
