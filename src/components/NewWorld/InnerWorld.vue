@@ -7,6 +7,8 @@
 
     <hr color='black'>
 
+    <!-- slots can take "templates" from the parent component,-->
+    <!-- and render them easily with the "slot" element (see "DeepWorld") -->
     <DeepWorld>
       This is also a default slot, but the line below overrides it
 
