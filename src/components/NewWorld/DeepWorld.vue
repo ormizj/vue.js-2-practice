@@ -2,6 +2,11 @@
   <div class="deep">
     <h3 ref="title">DeepWorld</h3>
     {{localRawHtml}}
+
+    <!-- slots can take "templates" from the parent component,-->
+    <!-- and render them easily with the "slot" element -->
+    <slot></slot>
+    <slot name="named"></slot>
   </div>
 </template>
 

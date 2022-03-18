@@ -29,7 +29,6 @@
 
     <!-- possible to use variables which are "HTML" elements as String with the "v-html", -->
     <div v-html="rawHtml"></div>
-
     <InnerWorld v-if="isInnerWorld" />
   </div>
 </template>
@@ -74,7 +73,7 @@ export default {
   methods: {
     submitInput() {
       //changing the element attribute with "ref"
-      this.$refs.title.innerHTML = this.$refs.title.innerHTML + ' changed with ref'
+      this.$refs.title.innerHTML = this.$refs.title.innerHTML + ' title changed with "ref"'
 
       //pushing to a new path with a query
       router.push({

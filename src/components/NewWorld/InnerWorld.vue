@@ -2,12 +2,23 @@
   <div class="inner">
     <!-- this element renders the current Component in the current Router (didn't find a use for it yet)-->
     <!-- <router-view></router-view> -->
-
     <h3 ref="title">InnerWorld</h3>
     <label>NewWorld Inputted Text: {{query}}</label>
 
     <hr color='black'>
-    <DeepWorld />
+
+    <DeepWorld>
+      This is also a default slot, but the line below overrides it
+
+      <!-- slots should always be contained by the "template" element, -->
+      <!-- and their parent element MUST be a component (you CAN'T do "<p><template></template></p>" for example)-->
+      <template v-slot:default>
+        <p>This is a default slot</p>
+      </template>
+      <template v-slot:named>
+        <p>This is a named slot</p>
+      </template>
+    </DeepWorld>
   </div>
 </template>
 
@@ -27,7 +38,8 @@ export default {
 
   components: {
     DeepWorld
-  }
+  },
+
 }
 </script>
 

@@ -68,7 +68,7 @@ export default {
     //checking routes for to decide which Components to render
     isApp() { return onRoute(this.$route, 'App') },
     isNewWorld() { return onRoute(this.$route, 'NewWorld') }
-  }
+  },
 }
 </script>
 
