@@ -90,7 +90,7 @@ export default {
 
 
   directives: {
-    //creating a new directive, to focus the user on an input ("v-focus" on element to call it)
+    //creating a new directive, to focus the user on an input ("v-focus" as element attribute to use it)
     focus: {
       // directive definition
       inserted: function (el) {
