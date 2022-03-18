@@ -7,7 +7,9 @@
     <h3 ref="title">NewWorld</h3>
 
     <!-- "v-model" binds the input value, to the "data" variable -->
+    <!-- you can also create custom "directives" ("v-focus" in this case) look below for more information-->
     <input
+      v-focus
       v-model="input"
       type="text"
     />
@@ -84,6 +86,17 @@ export default {
 
   watch: {
     input() { console.log(this.input) }
+  },
+
+
+  directives: {
+    //creating a new directive, to focus the user on an input ("v-focus" on element to call it)
+    focus: {
+      // directive definition
+      inserted: function (el) {
+        el.focus()
+      }
+    }
   }
 }
 
